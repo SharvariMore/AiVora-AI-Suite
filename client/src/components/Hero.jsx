@@ -12,19 +12,23 @@ const Hero = () => {
           <span className="text-primary">AI Tools</span>
         </h1>
         <p>
-          Transform your content creation with our suite of premium AI tools.
-          Write articles, generate images, and enhance your workflow.
+          Create smarter, faster, and beautifully. Produce polished writing,
+          vibrant images, and seamless content experiences using one unified AI
+          toolkit.
         </p>
       </div>
 
       <div className="flex flex-wrap justify-center gap-4 text-sm max-sm:text-xs">
         <button
           onClick={() => navigate("/ai")}
-          className="bg-primary text-white px-10 py-3 rounded-lg hover:scale-102 active:scale-95 transition cursor-pointer"
+          className="bg-primary text-white px-10 py-3 rounded-lg hover:scale-102 active:scale-95 transition font-semibold cursor-pointer"
         >
           Start Creating Now
         </button>
-        <button className="bg-white px-10 py-3 rounded-lg border border-gray-300 hover:scale-102 active:scale-95 transition cursor-pointer">
+        <button
+          onClick={() => navigate("/watch-demo")}
+          className="bg-white px-10 py-3 rounded-lg border border-gray-300 hover:scale-102 active:scale-95 transition cursor-pointer"
+        >
           Watch Demo
         </button>
       </div>

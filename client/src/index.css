@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&display=swap");
 @import "tailwindcss";
 
 * {
@@ -9,10 +9,239 @@
   --color-primary: #238b5a;
 }
 
-.reset-tw, .reset-tw *{
+.reset-tw,
+.reset-tw * {
   all: revert !important;
 }
 
 .cl-drawerRoot {
   z-index: 10;
+}
+
+@layer utilities {
+  /* Smooth premium blinking (fade in/out) */
+  @keyframes softBlink {
+    0% {
+      opacity: 1;
+    }
+    50% {
+      opacity: 0.35;
+    }
+    100% {
+      opacity: 1;
+    }
+  }
+
+  .blink-soft {
+    animation: softBlink 1.8s ease-in-out infinite;
+  }
+
+  @keyframes neonPulse {
+    0% {
+      opacity: 0.9;
+      text-shadow: 0 0 4px #00da83;
+    }
+    50% {
+      opacity: 0.4;
+      text-shadow: 0 0 10px #00da83;
+    }
+    100% {
+      opacity: 0.9;
+      text-shadow: 0 0 4px #00da83;
+    }
+  }
+
+  .neon-pulse {
+    animation: neonPulse 2s ease-in-out infinite;
+  }
+
+  /* 3D tilt card hover */
+  .hover-tilt {
+    transform-style: preserve-3d;
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
+  }
+  .hover-tilt:hover {
+    transform: perspective(900px) rotateX(8deg) rotateY(-8deg) translateY(-4px);
+    box-shadow: 0 25px 60px rgba(0, 0, 0, 0.6);
+  }
+
+  .flow-through {
+    background: linear-gradient(120deg, #00da83, #009bb3, #7c3aed);
+    background-size: 400% 400%;
+    animation: flowThrough 12s ease infinite;
+    position: relative;
+    overflow: hidden;
+  }
+
+  @keyframes flowThrough {
+    0% {
+      background-position: 0% 50%;
+    }
+    25% {
+      background-position: 50% 100%;
+    }
+    50% {
+      background-position: 100% 50%;
+    }
+    75% {
+      background-position: 50% 0%;
+    }
+    100% {
+      background-position: 0% 50%;
+    }
+  }
+
+  /* glossy sheen highlight sweep */
+  .glossy::after {
+    content: "";
+    position: absolute;
+    top: -150%;
+    left: -150%;
+    width: 300%;
+    height: 300%;
+    background: linear-gradient(
+      120deg,
+      transparent 0%,
+      rgba(255, 255, 255, 0.28) 45%,
+      rgba(255, 255, 255, 0.18) 50%,
+      transparent 55%
+    );
+    transform: rotate(25deg);
+    animation: sheenMove 5s linear infinite;
+    pointer-events: none;
+  }
+
+  @keyframes sheenMove {
+    0% {
+      transform: translateX(-100%) translateY(-100%) rotate(25deg);
+    }
+    100% {
+      transform: translateX(100%) translateY(100%) rotate(25deg);
+    }
+  }
+
+  /* subtle border glow */
+  .border-glow {
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    box-shadow: 0 0 40px rgba(0, 218, 131, 0.15);
+  }
+
+  /* shine effect */
+  .shine {
+    position: relative;
+    overflow: hidden;
+  }
+  .shine::before {
+    content: "";
+    position: absolute;
+    inset: -150%;
+    background: linear-gradient(
+      120deg,
+      transparent 0%,
+      rgba(255, 255, 255, 0.35) 50%,
+      transparent 100%
+    );
+    transform: translateX(-120%);
+  }
+  .shine:hover::before {
+    transform: translateX(120%);
+    transition: transform 0.8s ease-out;
+  }
+
+  /* section subtle fade */
+  .section-fade {
+    animation: sectionFade 1.1s ease both;
+  }
+
+  @keyframes sectionFade {
+    from {
+      opacity: 0;
+      transform: translateY(30px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  /* soft gradient border */
+  .gradient-border {
+    position: relative;
+  }
+  .gradient-border::before {
+    content: "";
+    position: absolute;
+    inset: -1px;
+    border-radius: inherit;
+    background: linear-gradient(120deg, #00da83, #009bb3, #7c3aed);
+    opacity: 0.6;
+    z-index: -1;
+  }
+
+  .why-card-width {
+    width: 22rem;
+  }
+
+  @media (max-width: 768px) {
+    .why-card-width {
+      width: 100%;
+    }
+  }
+
+  .why-flow-container {
+    overflow: hidden;
+    width: 100%;
+    position: relative;
+  }
+
+  /* inner track that moves left continuously */
+  .why-flow-track {
+    display: flex;
+    gap: 1.5rem;
+    width: max-content;
+    animation: whyScroll 18s linear infinite;
+  }
+
+  /* scrolling animation */
+  @keyframes whyScroll {
+    0% {
+      transform: translateX(0);
+    }
+    100% {
+      transform: translateX(-50%);
+    }
+  }
+
+  /* Border-only flowing gradient */
+  .flow-border {
+    position: relative;
+    border-radius: 1rem;
+  }
+
+  .flow-border::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    padding: 2px;
+    border-radius: inherit;
+    background: linear-gradient(120deg, #00da83, #009bb3, #7c3aed, #00da83);
+    background-size: 300% 300%;
+    animation: flowBorder 6s linear infinite;
+    -webkit-mask: linear-gradient(#fff 0 0) content-box,
+      linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+  }
+
+  @keyframes flowBorder {
+    0% {
+      background-position: 0% 50%;
+    }
+    50% {
+      background-position: 100% 50%;
+    }
+    100% {
+      background-position: 0% 50%;
+    }
+  }
 }

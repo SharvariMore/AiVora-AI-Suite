@@ -1,7 +1,13 @@
 import React from "react";
 import { assets } from "../assets/assets";
+import toast from "react-hot-toast";
 
 const Footer = () => {
+
+  const onSubscribe = () => {
+    toast.success("Welcome To Community!")
+  }
+
   return (
     <footer className="px-6 md:px-16 lg:px-24 xl:px-32 w-full text-sm text-slate-500 bg-white pt-10 mt-20">
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-14">
@@ -50,7 +56,7 @@ const Footer = () => {
                 type="email"
                 placeholder="Enter your email"
               />
-              <button className="bg-primary px-4 py-2 text-white rounded cursor-pointer">
+              <button onClick={() => onSubscribe()} className="bg-primary px-4 py-2 text-white rounded cursor-pointer">
                 Subscribe
               </button>
             </div>
