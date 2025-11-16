@@ -18,6 +18,10 @@ Developed Aivora a full-stack PERN (PostgreSQL, Express, React, Node.js) SaaS pl
 ### Home Page: Footer
 <img width="1919" height="1120" alt="image" src="https://github.com/user-attachments/assets/0707904a-4cd1-47b0-9bc0-ce1fcb5d164a" />
 
+### Ai Tool:
+<img width="1917" height="1123" alt="image" src="https://github.com/user-attachments/assets/3f09340a-e26c-4d72-9070-20c3d731fa65" />
+
+
 
 
 
